@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+.main-dashboard-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.dashboard-container{
+    display: flex;
+
+}
+/*salary content container  */
+.dashboard-container .dashboard-salary {
+    margin: 20px;
+    padding: 10px;
+    height: 220px;
+    width: 350px;
+    color: antiquewhite;
+    border-radius: 5%;
+    background: linear-gradient(135deg, rgb(5, 30, 77) 40%, rgb(14, 102, 168) 50%, rgb(28, 149, 189) 75%);
+  }
+  
+  /*salary content balance  */
+.dashboard-container .dashboard-salary h3{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+  /*salary content amount  */
+.dashboard-container .dashboard-salary h4{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 35px;
+    margin-left: 10px;
+    margin-bottom: 5px; 
+}
+  /*salary content card number  */
+.dashboard-container .dashboard-salary p{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
+    margin-left: 80px;
+}
+  /*salary content card image  */
+.dashboard-container .dashboard-salary .dasboard-img{
+    height: 50px;
+    width: 50px;
+    margin-left: 280px;
+    margin-top: -10px;
+}
+/*  employe total container  */
+.dashboard-container .dashboard-total-employe {
+    margin: 20px;
+    padding: 10px;
+    height: 180px;
+    border-radius: 10%;
+    width: 250px;
+    border: 5px solid #00b7ff;
+    background: #0e8beb;
+    color: azure;
+    font-family: 'Josefin Sans', sans-serif;
+}
+/*   employee part total*/
+.dashboard-container .dashboard-total-employe h3{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 35px;
+}
+.dashboard-container .dashboard-total-employe h4{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 50px;
+}
+.dashboard-container .dashboard-total-employe i {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 100px;
+  color: azure;
+  margin-left: 120px;
+  margin-top: -50px;
+}
+/*   project part total*/
+.dashboard-container .dashboard-num-project {
+  margin: 20px;
+  padding: 10px;
+  height: 180px;
+  border-radius: 10%;
+  width: 250px;
+  border: 5px solid #ec00f4;
+  background: #ec0296;
+  color: azure;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.dashboard-container .dashboard-num-project h3{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 35px;
+}
+.dashboard-container .dashboard-num-project h4{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 50px;
+}
+.dashboard-container .dashboard-num-project i {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 100px;
+  color: azure;
+  margin-left: 120px;
+  margin-top: -50px;
+}
+.dashboard-container .dashboard-project-rank {
+  margin: 20px;
+  padding: 10px;
+  height: 500px;
+  width: 30%; /* Use percentage value */
+  max-width: 400px; /* Optional: Set a maximum width if needed */
+  background: #323e48;
+  border-radius: 3%;
+  color: aliceblue;
+  overflow: scroll;
+  font-size: 20px;
+  justify-content: space-between;
+}
+
+
+.dashboard-container .dashboard-project-rank::-webkit-scrollbar {
+  width: 0em; /* Adjust as needed */
+}
+
+.dashboard-container .dashboard-project-rank::-webkit-scrollbar-thumb {
+  background-color: #323e48; /* Match the background color */
+  outline: 0px solid #323e48; /* Match the background color */
+}
+
+.dashboard-container .dashboard-project-rank h3{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 30px;
+  color: rgb(0, 251, 255);
+
+}
+.dashboard-project-rank .project-td {
+  padding: 10px; /* Adjust padding as needed */
+}
+
+.dashboard-project-rank .project-link {
+  color: #fff; /* Text color for the link */
+  text-decoration: none; /* Remove default underline */
+  font-weight: bold; /* Adjust font weight as needed */
+}
+
+.dashboard-project-rank .project-link:hover {
+  color: rgb(0, 251, 255);/* Text color on hover */
+}

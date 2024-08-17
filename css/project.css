@@ -1,0 +1,36 @@
+.card:hover {
+    /* Add your desired styles for the hover effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Example: Add a subtle box shadow */
+    transform: scale(1.05); /* Example: Slightly scale the container */
+    transition: 0.3s ease-in-out; /* Example: Add a smooth transition effect */
+}
+
+/* Add any other styles you want for the non-hover state here */
+
+.card {
+    margin-bottom: 20px;
+    transition: 0.3s ease-in-out; /* Ensure a smooth transition for non-hover state */
+    background-color: rgb(166, 172, 181);
+}
+
+.card-title  {
+    font-weight: bold;
+}
+
+/* Add any other styles for the card as needed */
+
+
+a {
+    text-decoration: none;
+    color: #010101;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+

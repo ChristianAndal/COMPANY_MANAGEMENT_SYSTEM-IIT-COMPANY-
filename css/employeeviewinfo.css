@@ -1,0 +1,71 @@
+
+
+.view-emp-profile {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.view-emp-profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.view-emp-employee-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.view-emp-employee-details,
+.view-emp-salary-details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.view-emp-employee-details li,
+.view-emp-salary-details li {
+    margin-bottom: 5px;
+}
+
+.view-emp-job-description {
+    margin-top: 20px;
+}
+.view-emp-button-con{
+    display: flex;
+justify-content: space-between;
+}
+.view-emp-view {
+    margin-left: 700px;
+    color:white;
+    background-color: lightskyblue;
+    height: 30px;
+    width:100px;
+    border-radius:25px;
+    border-color: lightskyblue;
+    margin-left: 0px;
+}
+.view-emp-delete-view {
+    margin-left: 700px;
+    color:white;
+    background-color: rgb(213, 17, 17);
+    height: 30px;
+    width:100px;
+    border-radius:25px;
+    border-color: rgb(232, 18, 72);
+    margin-left: 0px;
+}
+.view-emp-update-view {
+    margin-left: 700px;
+    color:white;
+    background-color: rgb(6, 220, 95);
+    height: 30px;
+    width:100px;
+    border-radius:25px;
+    border-color: rgb(0, 255, 255);
+    margin-left: 400px;
+}

@@ -1,0 +1,161 @@
+<?php
+include 'connect.php';
+
+if (isset($_GET['projectid'])) {
+    $id = $_GET['projectid'];
+
+    // Select project details using prepared statement
+    $sql = "SELECT * FROM project WHERE projectid = ?";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+        $projectname = $row['projectname'];
+        $description = $row['projectdescription'];
+        $status = $row['status'];
+        $client = $row['client'];
+        $budget = $row['budget'];
+        $projectimage = $row['projectimage'];
+        $projectid = $row['projectid'];
+    }
+}
+
+if (isset($_POST['submit'])) {
+    $projectname = $_POST['projectname'];
+    $description = $_POST['description'];
+    $status = $_POST['status'];
+    $client = $_POST['client'];
+    $budget = $_POST['budget'];
+
+    // Check if a file was uploaded
+    if (isset($_FILES['projectImage']) && $_FILES['projectImage']['error'] === UPLOAD_ERR_OK) {
+        // File upload handling
+        $uploadDir = '/COMPANY/content/upload/';
+        $uploadPath = $_SERVER['DOCUMENT_ROOT'] . $uploadDir;
+        $projectImage = $_FILES['projectImage']['name'];
+        $uploadFile = $uploadPath . $projectImage;
+
+        if (move_uploaded_file($_FILES['projectImage']['tmp_name'], $uploadFile)) {
+            // Check if updating an existing project
+            if (isset($projectid)) {
+                // Update existing project
+                $sql = "UPDATE project SET projectname=?, projectdescription=?, status=?, client=?, budget=?, projectimage=? WHERE projectid=?";
+
+                $stmt = mysqli_prepare($con, $sql);
+                mysqli_stmt_bind_param($stmt, "sssssi", $projectname, $description, $status, $client, $budget, $projectimage, $projectid);
+
+
+                $result = mysqli_stmt_execute($stmt);
+            } else {
+                // Insert new project
+                $sql = "INSERT INTO project (projectname, projectdescription, status, client, budget, projectimage) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = mysqli_prepare($con, $sql);
+                mysqli_stmt_bind_param($stmt, "ssssss", $projectname, $description, $status, $client, $budget, $uploadDir.$projectImage);
+                $result = mysqli_stmt_execute($stmt);
+            }
+
+            if ($result) {
+                header('location: project.php');
+                exit();
+            } else {
+                die(mysqli_error($con));
+            }
+        } else {
+            echo "File upload failed: " . $_FILES['projectImage']['error'];
+        }
+    } else {
+        // No new image selected, update other project details
+        $sql = "UPDATE project SET projectname=?, projectdescription=?, status=?, client=?, budget=? WHERE projectid=?";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "sssssi", $projectname, $description, $status, $client, $budget, $projectid);
+        $result = mysqli_stmt_execute($stmt);
+
+        if ($result) {
+            header('location: project.php');
+            exit();
+        } else {
+            die(mysqli_error($con));
+        }
+    }
+}
+?>
+
+<?php
+$basePath = $_SERVER['DOCUMENT_ROOT'];
+include $basePath . "/COMPANY/SideBar/adminSidebar.php";
+?>
+<!------burger menu -->
+<section class="home-section">
+    <div class="home-content">
+        <i class='bx bx-menu'></i>
+        <span class="text">New Project</span>
+    </div>
+    <div class="main-content">
+        <!---------------Contents start here ---------------->
+        <div class="container my-5">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" class="form-control"  value="<?php echo $projectname; ?>" placeholder="Enter Project Name" name="projectname" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Project Description</label>
+                    <textarea name="description" class="form-control" placeholder="Enter Project description"><?php echo $description; ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" name="status">
+                        <option value="Planning" <?php echo ($status === 'Planning') ? 'selected' : ''; ?>>Planning</option>
+                        <option value="Designing" <?php echo ($status === 'Designing') ? 'selected' : ''; ?>>Designing</option>
+                        <option value="Development" <?php echo ($status === 'Development') ? 'selected' : ''; ?>>Development</option>
+                        <option value="Testing" <?php echo ($status === 'Testing') ? 'selected' : ''; ?>>Testing</option>
+                        <option value="Implementation" <?php echo ($status === 'Implementation') ? 'selected' : ''; ?>>Implementation</option>
+                        <option value="Finish" <?php echo ($status === 'Finish') ? 'selected' : ''; ?>>Finish</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Client</label>
+                    <input type="text" class="form-control" value="<?php echo $client; ?>" placeholder="Enter Client" name="client" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Budget</label>
+                    <input type="text" class="form-control" value="<?php echo $budget; ?>" placeholder="Enter Budget" name="budget" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="projectImage">Current Project Image</label>
+                    <img src="<?php echo $projectimage; ?>" alt="Current Project Image" style="max-width: 300px; max-height: 300px;">
+                </div>
+                <div class="form-group">
+                    <label for="projectImage">New Project Image (Optional)</label>
+                    <input type="file" class="form-control-file" id="projectImage" name="projectImage" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary" name="submit">Create Project</button>
+            </form>
+        </div>
+        <!--------Contents end here---->
+        <!------Burger continuation--->
+    </div>
+</section>
+<!----JavaScript------------>
+<script>
+    let arrow = document.querySelectorAll(".arrow");
+
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e) => {
+            let arrowParent = e.target.parentElement.parentElement;
+            arrowParent.classList.toggle("showMenu");
+        });
+    }
+
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+    });
+</script>
+</body>
+</html>

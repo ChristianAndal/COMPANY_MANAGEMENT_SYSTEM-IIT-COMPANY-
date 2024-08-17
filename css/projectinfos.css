@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.heading{
+    text-align: center;
+}
+.heading-contents
+{
+    margin-top: 20px;
+}
+.heading-contents a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 400;
+    font-size: 20px;
+    transition: color 0.3s; 
+}
+
+.heading-contents a:hover {
+    color: #007BFF; 
+}
+
+/* Project contents */
+.project-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px; /* Adjust the margin as needed */
+    padding: 40px; /* Adjust the padding as needed */
+    margin-top: 1px;
+}
+
+.project-container .project-image {
+    width: 300px;
+    height: 300px;
+    margin: 15px; /* Adjust the margin as needed */
+    padding: 5px; /* Adjust the padding as needed */
+   
+}
+/*image boarder */
+
+.project-image-boarder{
+    border-style:  double ;
+    border-width: 50px;
+    border-top: solid 50px #1e00ff;
+    border-bottom: solid 50px #00f7ff;
+    border-left: ridge 50px #1e00ff;
+    border-right: double 50px #00f7ff;
+
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+ }
+ .project-image-boarder ::before{
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: #fff;
+    z-index: -1;
+ }
+ .project-image-boarder ::after{
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    z-index: -2;
+    filter:blur(50px);
+
+ }
+ .project-image-boarder ::before,
+ .project-image-boarder ::after
+ {
+    background: linear-gradient(235deg,#1e00ff,#060c21,#000000);
+ }
+
+
+ /* project informaiton  */
+ .project-container .project-info {
+    display: flex;
+    flex-direction: column;
+  
+    height: 470px;
+    width: 600px;
+    margin: 0px;
+    padding: 30px;
+}
+.project-container .project-info h3{
+    font-size: 20px;
+}
+
+/* project description  */
+
+.project-container .project-info .description-box {
+    max-width: 400px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    overflow: auto; 
+    height: 500px;
+    margin-top: 0px;
+}
+
+.project-container .project-info .description-box::-webkit-scrollbar {
+    width: 0 !important; /* Hide scrollbar in WebKit browsers (Chrome, Safari, etc.) */
+}
+
+.project-container .project-info .description-box {
+    scrollbar-width: thin; /* For Firefox */
+}
+
+.project-container .project-info .description-box::-webkit-scrollbar-track {
+    background: transparent; /* Set scrollbar track color to transparent */
+}
+/* Button */
+button.edit-bnt {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 4px;
+}
+
+button.del-bnt {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #ff006f; /* Red color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 4px;
+}
+
+button.download-bnt {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #00ffd0; /* Cyan color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 4px;
+}
+
+
+/* Hover effect */
+button:hover {
+    background-color: #060e18; /* Darker blue color on hover */
+}
+/* project Chart  */
+ .project-container .project-chart-container{
+        width: 200px;
+        height: 200px;
+        background-color: #3a3434;
+        border: solid 5px #00ffd0;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 10px;
+        padding: 0px;
+        margin-top: 10px;
+ }
+ .project-chart-container .chart-progress{
+    position:relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    color: #fff;
+    background: #444 linear-gradient(to right, transparent 50%, var(--clr) 0);
+ }
+ .project-chart-container .chart-progress h3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    z-index: 1;
+    font-weight: 500;
+ }
+ .project-chart-container .chart-progress h3 span{
+    font-size: 0.65em;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+
+ }
+ .project-chart-container .chart-progress h4{
+    font-size: 1.05em;
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-weight: 500;
+    color: var(--clr);
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+ }
+ .project-chart-container .chart-progress::before
+ {
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0/50%;
+ }
+
+ .project-chart-container .chart-progress::after{
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: #222;
+ }
+ .project-chart-container .chart-progress::before{
+    background: var(--clr);
+    transform: rotate(calc(((var(--i) - 50) * 0.01turn)));
+ }
+ /*  if the value is less than 50%   */
+ .project-chart-container .chart-progress.less::before{
+    background: #444;
+    transform: rotate(calc(((var(--i) - 0) * 0.01turn)));
+}
+/* chart container */
+.project-container .project-right-side-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 400px;
+    height: auto; /* Adjust as needed */
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Date Container */
+.project-container .project-right-side-container .project-date-container{
+    border: double 5px black;
+    width: 330px;
+    height: auto; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+   
+    margin-bottom: 10px;
+}
+.project-container .project-right-side-container .project-date-container h2{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+}
+.project-container .project-right-side-container .project-date-container h3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Chart Container */
+.project-container .project-right-side-container .chartcon {
+    border: double 5px black;
+    width: 330px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}

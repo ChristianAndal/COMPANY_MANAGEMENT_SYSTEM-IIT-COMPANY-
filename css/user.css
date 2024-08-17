@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.btnadd {
+    background-color: white;
+    border: green;
+}
+
+.btnadd:hover {
+    background-color: white;
+    color: green;
+    text-decoration: underline;
+}
+
+.btnupdate {
+    background-color: green;
+    text-decoration: none;
+}
+
+.btndelete {
+    background-color: red;
+}
+
+.btndelete.hover {
+    background-color: red;
+    text-decoration: none;
+}
+.btn-primary {
+    background-color: green;
+    border: green;
+}
+
+.btn-primary:hover {
+    background-color: white;
+    color: green;
+    text-decoration: underline;
+}
